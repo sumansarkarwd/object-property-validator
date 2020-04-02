@@ -1,0 +1,9 @@
+interface Args = {
+	rules: object,
+	data: object
+};
+
+export const Validate = (args: Args) => {
+	console.log('rules', args.rules);
+	console.log('data', args.data);
+};
