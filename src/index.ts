@@ -16,14 +16,14 @@ export const validate = (
    */
   const isValid = (): boolean => {
     // return true if rules has no key
-    if (Object.keys(rules).length) {
-      return false;
+    if (!Object.keys(rules).length) {
+      return true;
     }
     // return true if error messages has no key
-    if (Object.keys(messages).length) {
-      return false;
+    if (!Object.keys(messages).length) {
+      return true;
     }
-    return true;
+    return false;
   };
 
   /**
