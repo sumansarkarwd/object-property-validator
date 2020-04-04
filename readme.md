@@ -1,7 +1,7 @@
-#Object Property Validator
+##Object Property Validator
 Object Property Validator is a simple plugin to validate javascript objects. It is inspired by Laravel validations.
 
-#Installation
+##Installation
 ```bash
 npm install object-property-validator
 ```
