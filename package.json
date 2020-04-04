@@ -8,8 +8,8 @@
     "prepare": "npm run build"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Suman Sarkar",
+  "license": "MIT",
   "devDependencies": {
     "typescript": "^3.8.3"
   },
