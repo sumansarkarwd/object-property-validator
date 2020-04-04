@@ -28,11 +28,13 @@ export const validate = (
 
   /**
    * get rule method
-   * return the method to run validation by tesing regx
+   * returns the method to run validation by tesing regx
    */
   const getRuleMethod = (rule: string): Function | null => {
     const rulesLibrary: Array<any> = [
-      { regex: /^required$/, ruleMethod: requiredRule }
+      { regex: /^required$/, ruleMethod: requiredRule },
+      { regex: /^min:[0-9]+$/, ruleMethod: minRule },
+      { regex: /^max:[0-9]+$/, ruleMethod: maxRule },
     ];
 
     const ruleToRun = rulesLibrary.find(ruleLibItem =>
@@ -48,7 +50,13 @@ export const validate = (
   /**
    * rules will ge here
    */
-  const requiredRule = (value: any, label: string): string | boolean => {
+  /**
+   * Runs required validation, for strings checks length, for numbers of null or not and for object of has any key or not
+   * @param value 
+   * @param label 
+   * @param rule 
+   */
+  const requiredRule = (value: any, label: string, rule: string): string | boolean => {
     const typeOfValue = typeof value;
     label = getFormattedLabel(label);
     const errorMessage = `${label} is required`;
@@ -73,6 +81,64 @@ export const validate = (
   };
 
   /**
+   * Runs minimum validation, for string values checks the length of the string and for numbers check less or not
+   * @param value 
+   * @param label 
+   * @param rule 
+   */
+  const minRule = (value: any, label: string, rule: string): string | boolean => {
+    const regex = /^min:([0-9]+)$/;
+    const matchs: Array<any> | any = rule.match(regex);
+    const min_length: string | number | any = matchs[1];
+
+    const typeOfValue = typeof value;
+    let errorMessage: string = '';
+    label = getFormattedLabel(label);
+
+    if (typeOfValue === 'number') {
+      errorMessage = `${label} must be minimum ${min_length}`;
+      if (value < parseInt(min_length)) {
+        return errorMessage;
+      }
+    } else if (typeOfValue === 'string') {
+      errorMessage = `${label} must be minimum ${min_length} characters long`;
+      if (value.length < parseInt(min_length)) {
+        return errorMessage;
+      }
+    }
+    return false;
+  }
+
+  /**
+   * Runs maximum validation, for string values checks the length of the string and for numbers check greater or not
+   * @param value 
+   * @param label 
+   * @param rule 
+   */
+  const maxRule = (value: any, label: string, rule: string): string | boolean => {
+    const regex = /^max:([0-9]+)$/;
+    const matchs: Array<any> | any = rule.match(regex);
+    const max_length: string | number | any = matchs[1];
+
+    const typeOfValue = typeof value;
+    let errorMessage: string = '';
+    label = getFormattedLabel(label);
+
+    if (typeOfValue === 'number') {
+      errorMessage = `${label} must be maximum ${max_length}`;
+      if (value > parseInt(max_length)) {
+        return errorMessage;
+      }
+    } else if (typeOfValue === 'string') {
+      errorMessage = `${label} must be maximum ${max_length} characters long`;
+      if (value.length > parseInt(max_length)) {
+        return errorMessage;
+      }
+    }
+    return false;
+  }
+
+  /**
    * run validation on every item in rules object
    */
   const runValidation = () => {
@@ -85,7 +151,7 @@ export const validate = (
 
       let indivisualRules: Array<string> | any = [];
 
-      if (typeof dataKey === "string") {
+      if (typeof rulesPerItem === "string") {
         // if string then split by pipe(|) and make a rules array ['reuired', 'min:0']
         rulesPerItem = rulesPerItem.toString();
         indivisualRules = rulesPerItem.split("|");
@@ -98,7 +164,7 @@ export const validate = (
         const ruleMethod = getRuleMethod(rule);
 
         if (ruleMethod != null) {
-          const msg = ruleMethod(dataValue, dataKey);
+          const msg = ruleMethod(dataValue, dataKey, rule);
           if (msg) {
             messagesForCurrentKey.push(msg);
           }

@@ -19,7 +19,7 @@ const data = {
 }
 const rules = {
     name: 'required',
-    email: 'required',
+    phone: 'required|min:10|max:10',
 }
 const {isValid, errors} = validate(data, rules);
 
