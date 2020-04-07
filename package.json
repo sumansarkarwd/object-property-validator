@@ -1,6 +1,6 @@
 {
   "name": "object-property-validator",
-  "version": "1.0.8",
+  "version": "1.1.0",
   "description": "",
   "main": "lib/index.js",
   "scripts": {
@@ -21,6 +21,7 @@
     "lib/**/*"
   ],
   "dependencies": {
-    "@types/node": "^13.11.0"
+    "@types/node": "^13.11.0",
+    "typescript-require": "^0.2.10"
   }
 }

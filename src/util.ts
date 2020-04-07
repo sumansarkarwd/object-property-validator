@@ -1,8 +1,8 @@
-export const capitalizeFirstLetter = (word: string): string => {
+const capitalizeFirstLetter = (word: string): string => {
   return word[0].toUpperCase() + word.slice(1);
 };
 
-export const getWordsSplitedByCaps = (word: string): Array<any> | null => {
+const getWordsSplitedByCaps = (word: string): Array<any> | null => {
   word = capitalizeFirstLetter(word);
   const matchedWords: Array<string> | null = word.match(/[A-Z][a-z]+|[0-9]+/g);
 
