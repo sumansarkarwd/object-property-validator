@@ -1,5 +1,6 @@
 //const { getFormattedLabel } = reuired("./util")
 export{}
+const rulesLibrary = require("./rulesLibrary");
 
 interface validatorReturnType {
     errors: object;
@@ -32,13 +33,9 @@ export const validate = (
     * returns the method to run validation by tesing regx
     */
     const getRuleMethod = (rule: string): Function | null => {
-        const rulesLibrary: Array<any> = [
-            { regex: /^required$/, ruleMethod: 'requiredRule' },
-            { regex: /^min:[0-9]+$/, ruleMethod: 'minRule' },
-            { regex: /^max:[0-9]+$/, ruleMethod: 'maxRule' },
-        ];
+        const rulesLibraryItems: Array<any> = rulesLibrary; 
 
-        const ruleToRun = rulesLibrary.find(ruleLibItem =>
+        const ruleToRun = rulesLibraryItems.find(ruleLibItem =>
             ruleLibItem.regex.test(rule)
         );
 
