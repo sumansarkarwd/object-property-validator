@@ -51,6 +51,10 @@ export const validate = (
                 case 'maxRule':
                     ruleMethod = require("./validations/maxRule");
                     break;
+                case 'afterDateRule':
+                    ruleMethod = require("./validations/afterDateRule");
+                    break;
+
             }
         }
         return ruleMethod;
