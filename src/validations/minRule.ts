@@ -1,5 +1,4 @@
-export {};
-const { getFormattedLabel } = require("../util");
+var { getFormattedLabel } = require("../util");
 
 /**
 * Runs minimum validation, for string values checks the length of the string and for numbers check less or not
@@ -31,4 +30,4 @@ const minRule = (data: object, value: any, label: string, rule: string): string 
     return false;
 }
 
-module.exports = minRule;
+export{}
