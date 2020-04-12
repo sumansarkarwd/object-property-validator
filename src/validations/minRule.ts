@@ -1,3 +1,4 @@
+export{}
 var { getFormattedLabel } = require("../util");
 
 /**
@@ -30,4 +31,4 @@ const minRule = (data: object, value: any, label: string, rule: string): string 
     return false;
 }
 
-export{}
+module.exports = minRule;

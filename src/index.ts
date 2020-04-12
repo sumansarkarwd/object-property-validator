@@ -54,7 +54,9 @@ export const validate = (
                 case 'afterDateRule':
                     ruleMethod = require("./validations/afterDateRule");
                     break;
-
+                case 'numberRule':
+                    ruleMethod = require("./validations/numberRule");
+                    break;
             }
         }
         return ruleMethod;
