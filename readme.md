@@ -41,3 +41,5 @@ if(!isValid) {
 | after:{date},{format} | after:11-04-2020,DD-MM-YYYY | Checks if the given date is after the rule date or not. This time you also pass your own date format. #### Note: Make sure to use a valid date format. Behind the scene this package uses moment JS to compare dates |
 | number | number | Checks if the given date is either float or number. Note: for string type data it will parse it using Number() func. in javascript then validate with isNan() |
 | url | url | Checks if the given date is a valid url or not using the URL class in javascript |
+| alpha | alpha | Checks if the given date contains alphabets only |
+| fullname | fullname | Checks if the given date mathes the fullname regex. Example: John Does, De-John Doe |

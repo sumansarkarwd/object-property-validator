@@ -61,6 +61,12 @@ export const validate = (
                 case 'urlRule':
                     ruleMethod = require("./validations/urlRule");
                     break;
+                case 'alphaRule':
+                    ruleMethod = require("./validations/alphaRule");
+                    break;
+                case 'fullnameRule':
+                    ruleMethod = require("./validations/fullnameRule");
+                    break;
             }
         }
         return ruleMethod;

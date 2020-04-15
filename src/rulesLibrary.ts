@@ -5,6 +5,8 @@ const rulesLibrary: Array<any> = [
     { regex: /^after:[a-z0-9\-?]+(,[A-Za-z]+-[A-Za-z]+-[A-Za-z]+)?/, ruleMethod: 'afterDateRule' },
     { regex: /^number$/, ruleMethod: 'numberRule' },
     { regex: /^url$/, ruleMethod: 'urlRule' },
+    { regex: /^alpha$/, ruleMethod: 'alphaRule' },
+    { regex: /^fullname$/, ruleMethod: 'fullnameRule' },
 ];
 
 module.exports = rulesLibrary;
