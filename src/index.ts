@@ -57,6 +57,9 @@ export const validate = (
                 case 'numberRule':
                     ruleMethod = require("./validations/numberRule");
                     break;
+                case 'urlRule':
+                    ruleMethod = require("./validations/urlRule");
+                    break;
             }
         }
         return ruleMethod;
