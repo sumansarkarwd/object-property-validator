@@ -21,10 +21,11 @@ const rules = {
     name: 'required',
     phone: 'required|min:10|max:10',
 }
-const {isValid, errors} = validate(data, rules);
+const {isValid, errors, getFirstError} = validate(data, rules);
 
 if(!isValid) {
     console.log(errors);
+    consle.log(getFirstError);
 }
 ```
 

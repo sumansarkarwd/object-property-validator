@@ -5,6 +5,7 @@ const rulesLibrary = require("./rulesLibrary");
 interface validatorReturnType {
     errors: object;
     isValid: boolean;
+    getFirstError: string|null
 }
 
 export const validate = (
@@ -108,8 +109,18 @@ export const validate = (
 
     runValidation();
 
+    const getFirstError = (): string | null => {
+        const errorProperties: Array<any> = Object.keys(messages);
+        if(errorProperties.length) {
+            const firstPropErrorMessages: Array<string> = messages[errorProperties[0]];
+            return firstPropErrorMessages[0];
+        }
+        return null;
+    }
+
     return {
         errors: messages,
-        isValid: isValid()
+        isValid: isValid(),
+        getFirstError: getFirstError(),
     };
 };
