@@ -1,6 +1,6 @@
 {
   "name": "object-property-validator",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "Object Property Validator is a simple plugin to validate javascript objects. It is inspired by Laravel validations.",
   "main": "lib/index.js",
   "scripts": {
