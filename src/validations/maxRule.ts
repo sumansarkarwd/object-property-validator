@@ -13,7 +13,8 @@ const maxRule = (data: object, value: any, label: string, rule: string): string 
     const matchs: Array<any> | any = rule.match(regex);
     const max_length: string | number | any = matchs[1];
 
-    const typeOfValue = typeof value;
+    const parseValueToInt = Number(value);
+    const typeOfValue = isNaN(parseValueToInt) ? 'string' : 'number';
     let errorMessage: string = '';
     label = getFormattedLabel(label);
 
