@@ -14,14 +14,26 @@ const requiredRule = (data: object, value: any, label: string, rule: string): st
     label = getFormattedLabel(label);
     const errorMessage = `${label} is required`;
 
-    if (!value) {
+    if (value === null || value === undefined|| value === false) {
       return errorMessage;
     }
 
     switch (typeOfValue) {
-        case "string":
-            if (value.length == 0) {
+        case "number":
+            if (value == 0) {
                 return errorMessage;
+            }
+            return false;
+        case "string":
+            const valueParseInt = Number(value);
+            if(isNaN(valueParseInt)) {
+                if (value.length == 0) {
+                    return errorMessage;
+                }
+            } else {
+                if (valueParseInt == 0) {
+                    return errorMessage;
+                }
             }
             return false;
         case "object":
